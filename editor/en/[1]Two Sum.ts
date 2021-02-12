@@ -39,29 +39,27 @@
 // Only one valid answer exists.
 //
 // Related Topics Array Hash Table
-// 👍 19235 👎 684
+// 👍 19236 👎 685
 
 //leetcode submit region begin(Prohibit modification and deletion)
-/**
- * @param {number[]} nums
- * @param {number} target
- * @return {number[]}
- */
-var twoSum = function (nums, target) {
-  let result;
+function twoSum(nums: number[], target: number): number[] {
+  let result: number[];
 
-  nums.forEach((num_a, i) => {
-    nums.forEach((num_b, j) => {
-      const sameItem = i === j;
-      if (!sameItem) {
-        const sum = num_a + num_b;
-        if (sum === target) {
-          result = [i, j];
-        }
+  loop_root: for (let i = 0; i < nums.length; i++) {
+    const num_a = nums[i];
+    for (let j = 0; j < nums.length; j++) {
+      if (i === j) continue;
+
+      const num_b = nums[j];
+      const sum = num_a + num_b;
+
+      if (sum === target) {
+        result = [i, j];
+        break loop_root;
       }
-    });
-  });
+    }
+  }
 
   return result;
-};
+}
 //leetcode submit region end(Prohibit modification and deletion)
